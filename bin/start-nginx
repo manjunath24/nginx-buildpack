@@ -18,23 +18,23 @@ done
 
 #Start log redirection.
 (
-	#Initialize log directory.
-	mkdir -p /apps/logs/nginx
-	touch /apps/logs/nginx/access.log /apps/logs/nginx/error.log
-	#Redirect NGINX logs to stdout.
-	echo 'buildpack=nginx at=logs-initialized'
-	tail -qF -n 0 logs/nginx/*.log
-	echo 'logs' >$psmgr
+    #Initialize log directory.
+    mkdir -p /app/logs/nginx
+    touch /app/logs/nginx/access.log /app/logs/nginx/error.log
+    #Redirect NGINX logs to stdout.
+    echo 'buildpack=nginx at=logs-initialized'
+    tail -qF -n 0 logs/nginx/*.log
+    echo 'logs' >$psmgr
 ) &
 
 
 #Start NGINX
 (
-	#We expect nginx to run in foreground.
-	#We also expect a socket to be at /tmp/nginx.socket.
-	echo 'buildpack=nginx at=nginx-start'
-	bin/nginx -p . -c /app/config/nginx.conf
-	echo 'nginx' >$psmgr
+    #We expect nginx to run in foreground.
+    #We also expect a socket to be at /tmp/nginx.socket.
+    echo 'buildpack=nginx at=nginx-start'
+    bin/nginx -p . -c /app/config/nginx.conf
+    echo 'nginx' >$psmgr
 ) &
 
 #This read will block the process waiting on a msg to be put into the fifo.
