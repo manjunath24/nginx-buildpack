@@ -41,6 +41,8 @@ cd ngx_pagespeed-release-${NPS_VERSION}-beta/
 echo "Downloading PageSpeed psol"
 curl -L $pagespeed_psol | tar xzv
 
+cd ..
+
 echo "Downloading $pcre_tarball_url"
 (cd nginx-${NGINX_VERSION} && curl -L $pcre_tarball_url | tar xvj )
 
