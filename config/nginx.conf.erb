@@ -35,10 +35,6 @@ http {
 		server_name _;
 		keepalive_timeout 5;
 
-        location / {
-            proxy_pass http://nginx-pagespeed.herokuapp.com/;
-        }
-
         location /books/ {
           root /app/public/;
           index  index.html;
