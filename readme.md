@@ -31,6 +31,7 @@ Some application servers (e.g. Ruby's Unicorn) halt progress when dealing with n
 
 NGINX will output the following style of logs:
 
+
 ```
 measure.nginx.service=0.007 request_id=e2c79e86b3260b9c703756ec93f8a66d
 ```
